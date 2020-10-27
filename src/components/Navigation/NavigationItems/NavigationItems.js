@@ -1,11 +1,10 @@
 import React from 'react';
-
+import classes from './NavigationItems.css'
 
 
 
 const navigationItems = () =>(
-<ul>
-    <li><a href="/"></a>A Link</li>
+<ul className={classes.NavigationItems}>
 
 </ul>
 )
