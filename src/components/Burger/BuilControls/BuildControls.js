@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './BuildControls.css'
 
 const controls = [
     {label:'Salad', type:'salad'},
@@ -9,7 +10,7 @@ const controls = [
 
 const buildControls = () =>{
 return (
-    <div>
+    <div className={classes.BuildControls}>
 
 
 
