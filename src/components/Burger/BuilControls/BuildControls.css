@@ -5,8 +5,40 @@
     flex-flow: column;
     align-items: center;
     box-shadow: 0 2px 1px #ccc;
-    margin: auto;
+    margin:0 auto;
     padding: 10px 0;
+}
 
+@media(min-width: 2500px) and(min-height: 700px){
+    .BuildControls {
+        width: 100%;
+    }
+}
 
+@media(min-width: 2000px) and(min-height: 700px){
+    .BuildControls {
+        width: 100%;
+    }
+}
+
+@media(min-width: 1500px) and(min-height: 700px){
+    .BuildControls {
+        width: 100%
+    }
+}
+
+@media(min-width: 1000px) and(min-height: 700px){
+    .BuildControls {
+        width: 100%;
+    }
+}
+@media(min-width: 500px) and(min-height: 401px){
+    .BuildControls {
+        width: 100%;
+    }
+}
+@media(min-width: 500px) and(min-height: 400px){
+    .BuildControls {
+        width: 100%;
+    }
 }
