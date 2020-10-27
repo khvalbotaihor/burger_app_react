@@ -18,7 +18,7 @@ return (
                 label={ctrl.label}
                 added={()=> props.ingredientAdded(ctrl.type)}
                 removed={()=> props.ingredientRemoved(ctrl.type)}
-                disabled={props.disabledInfo}
+                disabled={props.disabled[ctrl.type]}
             />
         ))}
 
