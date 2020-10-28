@@ -20,8 +20,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
 
         render() {
             return <Aux>
-                <Modal show>
-                    Something didn't work!
+                <Modal show={this.state.error}>
+                    {this.state.error.message}
                 </Modal>
                 <WrappedComponent {...this.props} />
             </Aux>
