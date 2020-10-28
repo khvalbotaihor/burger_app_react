@@ -1,17 +1,17 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Modal from '../../components/UI/Modal/Modal';
 import Aux from '../Auxiliary/Auxilary';
 
-const withErrorHandler = (WrappedComponent) => {
-    return (props) => {
-        return (
-            <Aux>
-                <Modal >
+const withErrorHandler = (WrappedComponent, axios) => {
+    return class extends Component {
+        render() {
+            return <Aux>
+                <Modal show>
                     Something didn't work!
                 </Modal>
-                <WrappedComponent {...props} />
+                <WrappedComponent {...this.props} />
             </Aux>
-        )
+        }
     }
 
 }
