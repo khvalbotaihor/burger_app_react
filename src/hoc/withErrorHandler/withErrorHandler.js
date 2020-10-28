@@ -4,6 +4,17 @@ import Aux from '../Auxiliary/Auxilary';
 
 const withErrorHandler = (WrappedComponent, axios) => {
     return class extends Component {
+
+        state = {
+            error:null
+        }
+
+        componentDidMount() {
+            axios.interceptors.response.use(null, error =>{
+                this.setState({error: error})
+            })
+        }
+
         render() {
             return <Aux>
                 <Modal show>
