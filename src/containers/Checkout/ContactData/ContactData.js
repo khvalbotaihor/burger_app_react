@@ -9,11 +9,23 @@ import Input from '../../../components/UI/Input/Input';
 class ContactData extends Component {
 
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+        orderForm:{
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: ''
+            },
+
+            'Msx Schwarzmuller',
+            street: 'Test street 1',
+            zipCode: '41351',
+            country: 'Germany',
+            email: 'test@test.com',
+            deliveryMethod: 'fastest'
+
         },
         loading: false
     }
