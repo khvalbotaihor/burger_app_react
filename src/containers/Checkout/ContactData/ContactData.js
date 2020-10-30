@@ -45,7 +45,7 @@ class ContactData extends Component {
                 validation: {
                     required: true,
                     minLength: 5,
-                    maxLength:5,
+                    maxLength: 5,
                 },
                 valid: false,
                 touched: false
@@ -86,8 +86,10 @@ class ContactData extends Component {
                         ],
                     },
                     value: '',
+                    valid:true
                 },
         },
+        formIsValid: false,
         loading: false
     }
 
@@ -95,14 +97,14 @@ class ContactData extends Component {
         let isValid = true;
 
         if (rules.required) {
-            isValid= value.trim() !== '' && isValid;
+            isValid = value.trim() !== '' && isValid;
 
         }
-        if (rules.minLength){
-            isValid=value.length >=rules.minLength  && isValid;
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
         }
-        if (rules.maxLength){
-            isValid=value.length >=rules.maxLength && isValid;
+        if (rules.maxLength) {
+            isValid = value.length >= rules.maxLength && isValid;
         }
 
         return isValid;
@@ -112,7 +114,6 @@ class ContactData extends Component {
 
     orderHandler = (even) => {
         even.preventDefault();
-        console.log('ing' + this.props.ingredients)
         this.setState({loading: true})
 
         const formData = {};
@@ -162,10 +163,14 @@ class ContactData extends Component {
 
         updatedOrderForm[inputIdentifier] = updatedFormElement;
 
-        console.log(updatedFormElement);
+        let formIsValid = true;
+        for (let inputIdentifiers in updatedOrderForm) {
+            formIsValid = updatedOrderForm[inputIdentifiers].valid && formIsValid;
+        }
 
         this.setState({
-            orderForm: updatedOrderForm
+            orderForm: updatedOrderForm,
+            formIsValid: formIsValid
         })
 
     }
@@ -197,7 +202,10 @@ class ContactData extends Component {
                     />
                 ))}
 
-                <Button btnType="Success">ORDER</Button>
+                <Button
+                    btnType="Success"
+                    disabled={!this.state.formIsValid}
+                >ORDER</Button>
             </form>);
         if (this.state.loading) {
             form = <Spinner/>

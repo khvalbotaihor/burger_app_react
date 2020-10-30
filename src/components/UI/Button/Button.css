@@ -14,9 +14,12 @@
     margin-left: 0;
     padding-left: 0;
 }
-
+.Button:disabled{
+    color:#cccccc;
+}
 .Success {
     color: #5C9210;
+    cursor: not-allowed;
 }
 
 .Danger {
