@@ -10,18 +10,9 @@ import WithErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import {connect} from 'react-redux';
 import * as actionTypes from '../../store/actions';
 
-const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
-}
-
-
 class BurgerBuilder extends Component {
 
     state = {
-        totalPrice: 4,
         purchasable: false,
         purchasing: false,
         loading: false,
@@ -49,7 +40,7 @@ class BurgerBuilder extends Component {
         this.setState({purchasable: sum > 0})
     }
 
-    addIngredientHandler = (type) => {
+   /* addIngredientHandler = (type) => {
 
         const oldCount = this.state.ingredients[type];
         const updatedCounted = oldCount + 1;
@@ -86,7 +77,7 @@ class BurgerBuilder extends Component {
         this.updatePurchaseState(updatedIngredients)
 
     }
-
+*/
     purchaseHandler = (props) => {
         this.setState({purchasing: true})
     }
@@ -134,7 +125,7 @@ class BurgerBuilder extends Component {
                         disabled={disableInfo}
                         purchasable={this.state.purchasable}
                         ordered={this.purchaseHandler}
-                        price={this.state.totalPrice}
+                        price={this.props.price}
                     />
                 </Aux>
             );
@@ -142,7 +133,7 @@ class BurgerBuilder extends Component {
                 purchaseCanceled={this.purchaseCancelHandler}
                 purchaseContinued={this.purchaseContinueHandler}
                 ingredients={this.props.ings}
-                price={this.state.totalPrice}
+                price={this.props.price}
             />
         }
         ;
@@ -169,7 +160,8 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients
+        ings: state.ingredients,
+        price: state.totalPrice
     }
 }
 
