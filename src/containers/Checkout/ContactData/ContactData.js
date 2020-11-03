@@ -4,8 +4,9 @@ import classes from './ContactData.css';
 import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
-import {connect} from 'react-redux'
-
+import {connect} from 'react-redux';
+import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
+import * as actions from '../../../store/actions/index'
 
 class ContactData extends Component {
 
@@ -120,7 +121,6 @@ class ContactData extends Component {
 
     orderHandler = (even) => {
         even.preventDefault();
-        this.setState({loading: true})
 
         const formData = {};
         for (let formElementIdentifier in this.state.orderForm) {
@@ -131,18 +131,12 @@ class ContactData extends Component {
             ingredients: this.props.ings,
             price: this.props.price,
             orderData: formData,
-            customer: {
-                name: 'Msx Schwarzmuller',
-                address: {
-                    street: 'Test street 1',
-                    zipCode: '41351',
-                    country: 'Germany'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod: 'fastest'
 
         }
+
+        this.props.onOrderBurger(order);
+
+
         axios.post('/order.json', order)
             .then(response => {
                 this.setState({loading: false});
@@ -236,4 +230,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+    onOrderBurger: (orderData)=> dispatch(actions.purchaseBurgerStart(orderData))
+}
+
+export default connect(mapStateToProps)(withErrorHandler(ContactData, axios));
