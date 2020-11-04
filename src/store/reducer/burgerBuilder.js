@@ -57,13 +57,9 @@ const fetchIngredientsFailed = (state, action) => {
 const burgerBuilder = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.ADD_INGREDIENT: return addIngredient(state, action);
-
         case ActionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action)
-
         case ActionTypes.SET_INGREDEIENTS: return setIngredients(state, action)
-
         case ActionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state, action)
-
         default:
             return state;
     }
