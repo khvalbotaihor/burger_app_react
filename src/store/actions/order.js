@@ -75,9 +75,8 @@ export const fetchOder = () => {
                     })
                 }
                 dispatch(fetchOrdersSuccess(fetchOrders));
-                this.setState({loading: false, orders: fetchOrders})
             }).catch(error => {
-            this.setState({loading: false})
+            dispatch(fetchOrdersFail(error))
 
         })
     }
