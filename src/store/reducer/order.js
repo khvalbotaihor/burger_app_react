@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     orders: [],
-    loading: false
+    loading: false,
+    purchased: false
 }
 
 const order = (state = initialState, action) => {
@@ -10,7 +11,7 @@ const order = (state = initialState, action) => {
         case actionTypes.PURCHASE_INIT:
             return {
                 ...state,
-                purchase:false
+                purchased:false
             }
 
         case actionTypes.PURCHASE_BURGER_START:
