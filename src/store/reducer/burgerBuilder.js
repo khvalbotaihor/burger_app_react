@@ -49,20 +49,17 @@ const setIngredients = (state, action) =>{
 }
 
 const fetchIngredientsFailed = (state, action) => {
-    return updateObject(state,{
-        error:true
-    } )
+    return updateObject(state,{error:true} )
 }
 
-const burgerBuilder = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.ADD_INGREDIENT: return addIngredient(state, action);
         case ActionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action)
-        case ActionTypes.SET_INGREDEIENTS: return setIngredients(state, action)
+        case ActionTypes.SET_INGREDIENTS: return setIngredients(state, action)
         case ActionTypes.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state, action)
-        default:
-            return state;
+        default: return state;
     }
 }
 
-export default burgerBuilder;
+export default reducer;

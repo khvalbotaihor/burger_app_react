@@ -18,7 +18,6 @@ export const purchaseBurgerFail = (error) => {
 export const purchaseBurgerStart = () => {
     return {
         type: actionTypes.PURCHASE_BURGER_START
-
     }
 }
 
@@ -61,23 +60,22 @@ export const fetchOrdersStart = () => {
     }
 }
 
-export const fetchOders = () => {
+export const fetchOrders = () => {
 
     return dispatch => {
         dispatch(fetchOrdersStart())
         axios.get('/order.json')
             .then(res => {
-                const fetchOrders = [];
-                console.log('result:');
-                console.log(res);
+                const fetchedOrders = [];
                 for (let key in res.data) {
-                    fetchOrders.push({
+                    fetchedOrders.push({
                         ...res.data[key],
                         id: key
                     })
                 }
-                dispatch(fetchOrdersSuccess(fetchOrders));
-            }).catch(error => {
+                dispatch(fetchOrdersSuccess(fetchedOrders));
+            })
+            .catch(error => {
             dispatch(fetchOrdersFail(error))
 
         })
